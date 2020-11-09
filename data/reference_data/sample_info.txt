@@ -1,0 +1,17 @@
+sampleId	mouse	stringtieId	strain	diet	genotype	condition	replicate
+M21390	21390	M21390	ApoE_del	ND	ApoE_del	ND	1
+M21392	21392	M21392	ApoE_del	ND	ApoE_del	ND	2
+M21479	21479	M21479	ApoE_del	ND	ApoE_del	ND	3
+M21480	21480	M21480	ApoE_del	ND	ApoE_del	ND	4
+M20654	20654	M20654	ApoE_del	ND	ApoE_del_liver_DKO	liver_DKO_ND	1
+M22067	22067	M22067	ApoE_del	ND	ApoE_del_liver_DKO	liver_DKO_ND	2
+M21109	21109	M21109	ApoE_del	ND	ApoE_del_liver_DKO	liver_DKO_ND	3
+M21110	21110	M21110	ApoE_del	ND	ApoE_del_liver_DKO	liver_DKO_ND	4
+M20005	20005	M20005	ApoE_del	WD	ApoE_del	WD	1
+M20431	20431	M20431	ApoE_del	WD	ApoE_del	WD	2
+M20117	20117	M20117	ApoE_del	WD	ApoE_del	WD	3
+M20119	20119	M20119	ApoE_del	WD	ApoE_del	WD	4
+M20343	20343	M20343	ApoE_del	WD	ApoE_del_liver_DKO	liver_DKO_WD	1
+M20345	20345	M20345	ApoE_del	WD	ApoE_del_liver_DKO	liver_DKO_WD	2
+M20371	20371	M20371	ApoE_del	WD	ApoE_del_liver_DKO	liver_DKO_WD	3
+M20372	20372	M20372	ApoE_del	WD	ApoE_del_liver_DKO	liver_DKO_WD	4
