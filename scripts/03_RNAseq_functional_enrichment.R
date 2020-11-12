@@ -200,7 +200,7 @@ readr::write_tsv(x = topgo_res, path = paste(outPrefix, ".topGO.tab", sep = ""))
 
 ## top 10 GO term bar plot
 topgoPlotDf <- dplyr::group_by(topgo_res, category) %>% 
-  dplyr::arrange(weightedFisher, .by_group = TRUE) %>% 
+  dplyr::arrange(pvalue, .by_group = TRUE) %>% 
   dplyr::slice(1:10) %>% 
   dplyr::ungroup()
 
