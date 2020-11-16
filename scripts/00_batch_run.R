@@ -10,7 +10,6 @@ rm(list = ls())
 
 # ## RNAseq DESeq2 differential gene expression batches
 # file_RNAseq_info <-here::here("data", "reference_data", "DESeq2_DEG_info.txt")
-# diffDataPath <- here::here("analysis", "02_DESeq2_diff")
 # script_deseq2 <- here::here("scripts", "02_DESeq2_pairwise.R")
 # 
 # runConfig <- suppressMessages(readr::read_tsv(file_RNAseq_info))
@@ -109,28 +108,3 @@ for (i in 1:nrow(runConfig)) {
 # }
 
 
-
-
-#
-#
-# library(org.Anidulans.FGSCA4.eg.db)
-# orgDb <- org.Anidulans.FGSCA4.eg.db
-#
-# keytypes(orgDb)
-#
-# df <- AnnotationDbi::select(x = orgDb, keys = keys(orgDb), columns = c("GOALL", "ONTOLOGYALL"))
-#
-# goTerms <- AnnotationDbi::select(x = GO.db, keys = unique(df$GOALL), columns = "TERM")
-#
-# df <- dplyr::left_join(x = df, y = goTerms, by = c("GOALL" = "GOID"))
-#
-# data <- dplyr::group_by(df, GID) %>%
-#   dplyr::summarise(
-#     GOALL = paste(GOALL, collapse = ";"),
-#     ONTOLOGYALL = paste(ONTOLOGYALL, collapse = ";"),
-#     TERM = paste(TERM, collapse = " | "),
-#   )
-#
-# readr::write_tsv(x = data, path = "AN.GO_data.tab")
-#
-#

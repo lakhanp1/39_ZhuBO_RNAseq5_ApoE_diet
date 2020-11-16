@@ -19,7 +19,7 @@ suppressPackageStartupMessages(library(org.GRCm38p6.Ensembl100.eg.db))
 ## It also perform PCA analysis using FPKM values
 rm(list = ls())
 
-analysisName <- "count_data.all"
+analysisName <- "count_data.all2"
 
 file_sampleInfo <- here::here("data", "reference_data", "sample_info.txt")
 readLength <- as.numeric(readr::read_file(file = here::here("data", "reference_data", "read_length.config")))
@@ -35,7 +35,7 @@ if(!dir.exists(outDir)){
 
 ###########################################################################
 exptInfo <- suppressMessages(readr::read_tsv(file = file_sampleInfo)) %>% 
-  # dplyr::filter(diet == "ND") %>%
+  # dplyr::filter(diet == "WD") %>%
   as.data.frame()
 
 rownames(exptInfo) <- exptInfo$sampleId
