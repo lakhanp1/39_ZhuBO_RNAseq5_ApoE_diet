@@ -2,7 +2,6 @@ suppressPackageStartupMessages(library(ComplexHeatmap))
 suppressPackageStartupMessages(library(circlize))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(RColorBrewer))
-suppressPackageStartupMessages(library(data.table))
 suppressPackageStartupMessages(library(org.GRCm38p6.Ensembl100.eg.db))
 
 ## This script
@@ -21,7 +20,7 @@ suppressPackageStartupMessages(library(org.GRCm38p6.Ensembl100.eg.db))
 
 
 rm(list = ls())
-source(file = "E:/Chris_UM/GitHub/omics_util/04_GO_enrichment/s01_topGO_functions.R")
+source(file = "E:/Chris_UM/GitHub/omics_util/04_GO_enrichment/s01_enrichment_functions.R")
 source("E:/Chris_UM/GitHub/omics_util/02_RNAseq_scripts/s02_DESeq2_functions.R")
 
 ####################################################################
@@ -67,7 +66,7 @@ geneSets <- dplyr::mutate(
 
 ####################################################################
 
-setRow <- 5
+setRow <- 10
 
 degResult <- geneSets$deg[setRow]
 outDir <- paste(diffDataPath, "/", degResult, "/geneset_plots", sep = "")
@@ -101,7 +100,7 @@ rldCount <- suppressMessages(readr::read_tsv(file = rnaseqInfo$rld)) %>%
 ## function to extract the log2FoldChange, padj and diff coulumns for each DEG result file
 get_foldchange <- function(degFile, name, lfcCol = "log2FoldChange", fdrCol = "padj", fdr_cut){
   
-  degs <- fread(file = degFile, sep = "\t", header = T, stringsAsFactors = F)
+  degs <- suppressMessages(readr::read_tsv(file = degFile))
   
   newColName <- structure(c(lfcCol, fdrCol),
                           names = paste(c("lfc.", "padj." ), name, sep = ""))
@@ -150,7 +149,7 @@ for(i in 1:nrow(rnaseqInfo)){
 
 rownameCol <- "GENE_NAME"
 showRowNames <- TRUE
-rowNameFontSize <- 8
+rowNameFontSize <- 10
 colNameFontSize <- 14
 
 
@@ -282,13 +281,13 @@ plotHt <- nrow(plotData) * 0.1 + 1
 plotWd <- length(sampleIds)
 # png(filename = paste(outPrefix, ".fc_rld_heatmap.png", sep = ""), width=6000, height=6000, res = 550)
 
-pdf(file = paste(outPrefix, ".pdf", sep = ""), height = 8, width = 8)
+pdf(file = paste(outPrefix, ".pdf", sep = ""), height = 6, width = 7)
 
 draw(
   object = htList3,
   column_title = wrap_80(plotTitle),
   row_title = "Genes",
-  column_title_gp = gpar(fontsize = 14)
+  column_title_gp = gpar(fontsize = 12)
 )
 
 dev.off()

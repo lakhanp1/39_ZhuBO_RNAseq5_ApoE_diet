@@ -21,7 +21,7 @@ suppressPackageStartupMessages(library(org.GRCm38p6.Ensembl100.eg.db))
 
 
 rm(list = ls())
-source(file = "E:/Chris_UM/GitHub/omics_util/04_GO_enrichment/s01_topGO_functions.R")
+source(file = "E:/Chris_UM/GitHub/omics_util/04_GO_enrichment/s01_enrichment_functions.R")
 source("E:/Chris_UM/GitHub/omics_util/02_RNAseq_scripts/s02_DESeq2_functions.R")
 
 ####################################################################
@@ -66,7 +66,7 @@ geneSets <- dplyr::mutate(
 
 ####################################################################
 
-setRow <- 1
+setRow <- 2
 
 degResult <- geneSets$deg[setRow]
 outDir <- paste(diffDataPath, "/", degResult, "/geneset_plots", sep = "")
@@ -99,8 +99,11 @@ pt_vol <- volcano_plot(
   fdr_col = col_fdr, lfc_col = col_lfc,
   fdr_cut = cutoff_fdr, lfc_cut = cutoff_lfc,
   markGenes = unlist(geneSets$geneId[setRow]),
+  highlightGenesets = geneSets$geneId[setRow],
+  genesetColor = c("1" = "red"),
   geneNameCol = "GENE_NAME",
-  ylimit = 5, xlimit = c(-5, 5)
+  ylimit = 4, xlimit = c(-4, 4),
+  pointSize = 2
 )
 
 
@@ -112,11 +115,11 @@ pt_vol$plot <- pt_vol$plot +
 
 pt_vol$plot
 
-ggsave(
-  filename = paste(outPrefix, plotOutSuffix, ".png", sep = ""),
-  plot = pt_vol$plot,
-  width = 10, height = 10
-)
+# ggsave(
+#   filename = paste(outPrefix, plotOutSuffix, ".png", sep = ""),
+#   plot = pt_vol$plot,
+#   width = 10, height = 10
+# )
 
 ggsave(
   filename = paste(outPrefix, plotOutSuffix, ".svg", sep = ""),
